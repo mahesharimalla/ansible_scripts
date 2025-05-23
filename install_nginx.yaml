@@ -1,0 +1,29 @@
+---
+- name: Install nginx on slave-node
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Update Server
+      apt:
+        update_cache: yes
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: latest
+    - name: start the nginx service
+      service:
+        name: nginx
+        state: started
+    - name: restart the nginx service
+      service:
+        name: nginx
+        state: restarted
+
+
+
+
+
+# ansible-playbook install_nginx.yaml
+# ansible-playbook -i inventory.ini nginx.yaml  --> if you are added your own inventory file
+
