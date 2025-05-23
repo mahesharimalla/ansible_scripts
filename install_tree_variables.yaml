@@ -1,0 +1,11 @@
+--- 
+- name: Installing tree in ubuntu slave-node
+  hosts: all
+  become: yes
+
+  vars:
+    pkg_name: "tree"
+
+  tasks: 
+    - name: Install "{{pkg_name}}" on ubuntu slave-node
+      apt: { name : "{{pkg_name}}", state : present }
