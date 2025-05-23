@@ -1,0 +1,19 @@
+---
+- name: Installing Apache2 in salve-node through variables
+  hosts: all
+  become: yes
+  vars_files:
+  - vars.yaml
+
+
+  tasks:
+    - name: Installing apache2 in slave-node by using variables
+      apt:
+        name: "{{apache2_server}}"
+        state: latest
+        update_cache: yes
+
+    - name: Apache2 start
+      service:
+        name: "{{apache2_server}}"
+        state: started
