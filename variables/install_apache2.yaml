@@ -13,7 +13,12 @@
         state: latest
         update_cache: yes
 
-    - name: Apache2 start
+    - name: Apache2 start on slave-node
       service:
         name: "{{apache2_server}}"
         state: started
+
+    - name: Apache2 restart on slave-node
+      service:
+        name: "{{apache2_server}}"
+        state: restarted
