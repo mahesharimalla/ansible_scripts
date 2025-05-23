@@ -1,0 +1,15 @@
+---
+- name: Install open-jdk on slave-node
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Update server
+      apt:
+        update_cache: yes
+
+
+    - name: Install Java
+      apt:
+        name: default-jdk
+        state: present
