@@ -1,0 +1,14 @@
+---
+- name: Uninstall nginx on slave-node
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Update Server
+      apt:
+        update_cache: yes
+    - name: Uninstall nginx
+      apt:
+        name: nginx
+        state: absent
+   
